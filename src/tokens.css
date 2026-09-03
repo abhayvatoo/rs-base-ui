@@ -1,0 +1,33 @@
+/*
+ * Single source of truth for design token values. Defined once here;
+ * every consumer references them via var(--token-name) rather than
+ * duplicating hex values.
+ */
+:root {
+  --radius: 0.5rem;
+  --background: #fffdf7;
+  --foreground: #2a2622;
+  --card: #fff8dc;
+  --card-foreground: #2a2622;
+  --popover: #fff8dc;
+  --popover-foreground: #2a2622;
+  --primary: #8b0000;
+  --primary-foreground: #fff8dc;
+  --secondary: #f3e7c9;
+  --secondary-foreground: #5c3a21;
+  --muted: #f1e6cc;
+  --muted-foreground: #7a6a52;
+  --accent: #f5e6d3;
+  --accent-foreground: #5c1a1a;
+  --destructive: #c0392b;
+  --destructive-foreground: #fff8dc;
+  --success: #3f7d4f;
+  --success-foreground: #fff8dc;
+  --warning: #b8860b;
+  --warning-foreground: #2a2622;
+  --info: #3d6b8a;
+  --info-foreground: #fff8dc;
+  --border: #e4d5ae;
+  --input: #e4d5ae;
+  --ring: #8b0000;
+}

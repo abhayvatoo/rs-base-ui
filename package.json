@@ -1,6 +1,6 @@
 {
   "name": "rs-base-ui",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Shared React UI component library (Radix + Tailwind v4), published for reuse across personal projects.",
   "license": "MIT",
   "type": "module",
@@ -17,7 +17,8 @@
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
     },
-    "./styles.css": "./dist/style.css"
+    "./styles.css": "./dist/style.css",
+    "./theme.css": "./dist/theme.css"
   },
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
@@ -28,7 +29,7 @@
     "node": ">=20"
   },
   "scripts": {
-    "build": "tsup src/index.js --format esm,cjs --external react,react-dom --clean && tailwindcss -i ./src/styles.css -o ./dist/style.css --minify",
+    "build": "tsup src/index.js --format esm,cjs --external react,react-dom --clean && tailwindcss -i ./src/styles.css -o ./dist/style.css --minify && cp src/theme.css dist/theme.css",
     "prepublishOnly": "npm run build"
   },
   "peerDependencies": {
