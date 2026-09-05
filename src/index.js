@@ -73,4 +73,6 @@ export {
 } from './components/pagination.jsx';
 export { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from './components/tooltip.jsx';
 export { Progress } from './components/progress.jsx';
+export { Tabs, TabsList, TabsTrigger, TabsContent } from './components/tabs.jsx';
+export { Popover, PopoverTrigger, PopoverContent, PopoverAnchor } from './components/popover.jsx';
 export { cn } from './lib/utils.js';
