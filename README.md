@@ -21,9 +21,27 @@ The stylesheet is fully self-contained (Tailwind is compiled at build time insid
 
 ## Components
 
-Button, Input, Textarea, Label, Checkbox, RadioGroup/RadioGroupItem, Select (+ subcomponents), Dialog (+ subcomponents), AlertDialog (+ subcomponents), DropdownMenu (+ subcomponents), Table (+ subcomponents), Badge, Alert (+ AlertTitle/AlertDescription), Breadcrumb (+ subcomponents), Pagination (+ subcomponents), Tooltip (+ subcomponents), Progress.
+Button, Input, Textarea, Label, Checkbox, RadioGroup/RadioGroupItem, Select (+ subcomponents), Dialog (+ subcomponents), AlertDialog (+ subcomponents), DropdownMenu (+ subcomponents), Table (+ subcomponents), Badge, Alert (+ AlertTitle/AlertDescription), Breadcrumb (+ subcomponents), Pagination (+ subcomponents), Tooltip (+ subcomponents), Progress, Tabs (+ subcomponents), Popover (+ subcomponents), Calendar.
 
-Not included by design: file upload / date-picker / multi-select wrappers. Those wrap specific third-party libraries (`react-dropzone`, `react-datepicker`) that are app-specific integration choices, not look-and-feel — build them in the consuming app using `Input`/`Button`/`Popover` primitives from here.
+`Calendar` is shadcn's calendar on [DayPicker](https://daypicker.dev) (`@daypicker/react`, installed as a dependency). Every DayPicker prop passes through:
+
+```jsx
+<Calendar
+  mode="multiple"
+  selected={days}
+  onSelect={setDays}
+  month={new Date(2026, 10, 1)}           // show one fixed month…
+  hideNavigation                          // …with no prev/next buttons
+  showOutsideDays={false}
+  disabled={{ dayOfWeek: [1, 2, 3, 4, 5] }} // or { before }, { after }, dates, functions
+  modifiers={{ booked: bookedDays }}      // extra day states, styled by modifiersClassNames
+  readOnly={locked}                       // shows `selected` but ignores clicks and keys
+/>
+```
+
+Cell size is the `--cell-size` CSS variable (default `--spacing(8)`), e.g. `className="[--cell-size:--spacing(10)]"`.
+
+Not included by design: file upload / date-input / multi-select wrappers. Those wrap specific third-party libraries (`react-dropzone`, `react-datepicker`) that are app-specific integration choices, not look-and-feel — build them in the consuming app using `Input`/`Button`/`Popover`/`Calendar` primitives from here.
 
 ## Releasing
 
