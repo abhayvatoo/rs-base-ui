@@ -50,13 +50,14 @@ npm version patch   # or minor / major
 git push --follow-tags
 ```
 
-Pushing a version tag triggers `.github/workflows/publish.yml`, which builds and runs `npm publish --access public` using the `NPM_TOKEN` repo secret.
+Then publish a GitHub Release for that tag. Publishing the release (not pushing the tag) triggers `.github/workflows/publish.yml`, which builds and runs `npm publish --access public` using the `NPM_TOKEN` repo secret. Running `npm publish` locally also works (`prepublishOnly` builds first).
 
 ## Local development against a consumer app
 
 ```sh
-npm run build
-npm link
+npm run build && npm pack   # writes rs-base-ui-<version>.tgz
 # in the consumer app:
-npm link rs-base-ui
+npm install --no-save /path/to/rs-base-ui/rs-base-ui-<version>.tgz
 ```
+
+Don't use `npm link`: the consumer then resolves React from this repo's `node_modules` as well as its own, and Vite apps break with duplicate-React hook errors. `npm install` in the consumer restores the published version.
