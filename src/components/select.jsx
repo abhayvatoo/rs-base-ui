@@ -35,7 +35,10 @@ function SelectTrigger({ className, size = 'default', children, ...props }) {
   );
 }
 
-function SelectContent({ className, children, position = 'item-aligned', align = 'center', ...props }) {
+// Opens under the trigger ('popper'), like the other popovers. Radix's 'item-aligned' instead
+// moves the list so the selected item covers the trigger: with the last item selected the whole
+// list opens above it, and it jumps around as the value changes.
+function SelectContent({ className, children, position = 'popper', align = 'start', ...props }) {
   return (
     <SelectPrimitive.Portal>
       <SelectPrimitive.Content
