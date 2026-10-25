@@ -57,6 +57,15 @@ export { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from '.
 export { Badge, badgeVariants } from './components/badge.jsx';
 export { Alert, AlertTitle, AlertDescription, alertVariants } from './components/alert.jsx';
 export {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardAction,
+  CardContent,
+  CardFooter
+} from './components/card.jsx';
+export {
   Breadcrumb,
   BreadcrumbList,
   BreadcrumbItem,
@@ -76,4 +85,5 @@ export { Progress } from './components/progress.jsx';
 export { Tabs, TabsList, TabsTrigger, TabsContent } from './components/tabs.jsx';
 export { Popover, PopoverTrigger, PopoverContent, PopoverAnchor } from './components/popover.jsx';
 export { Calendar, CalendarDayButton } from './components/calendar.jsx';
+export { Combobox, ComboboxHighlight } from './components/combobox.jsx';
 export { cn } from './lib/utils.js';

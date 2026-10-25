@@ -21,7 +21,7 @@ The stylesheet is fully self-contained (Tailwind is compiled at build time insid
 
 ## Components
 
-Button, Input, Textarea, Label, Checkbox, RadioGroup/RadioGroupItem, Select (+ subcomponents), Dialog (+ subcomponents), AlertDialog (+ subcomponents), DropdownMenu (+ subcomponents), Table (+ subcomponents), Badge, Alert (+ AlertTitle/AlertDescription), Breadcrumb (+ subcomponents), Pagination (+ subcomponents), Tooltip (+ subcomponents), Progress, Tabs (+ subcomponents), Popover (+ subcomponents), Calendar.
+Button, Input, Textarea, Label, Checkbox, RadioGroup/RadioGroupItem, Select (+ subcomponents), Dialog (+ subcomponents), AlertDialog (+ subcomponents), DropdownMenu (+ subcomponents), Table (+ subcomponents), Badge, Alert (+ AlertTitle/AlertDescription), Card (+ CardHeader/CardTitle/CardDescription/CardAction/CardContent/CardFooter), Breadcrumb (+ subcomponents), Pagination (+ subcomponents), Tooltip (+ subcomponents), Progress, Tabs (+ subcomponents), Popover (+ subcomponents), Calendar, Combobox (+ ComboboxHighlight).
 
 `Calendar` is shadcn's calendar on [DayPicker](https://daypicker.dev) (`@daypicker/react`, installed as a dependency). Every DayPicker prop passes through:
 
@@ -40,6 +40,22 @@ Button, Input, Textarea, Label, Checkbox, RadioGroup/RadioGroupItem, Select (+ s
 ```
 
 Cell size is the `--cell-size` CSS variable (default `--spacing(8)`), e.g. `className="[--cell-size:--spacing(10)]"`.
+
+`Combobox` is a search box with a list that opens under it (WAI-ARIA combobox): arrow keys move the highlight while focus stays in the input, Enter picks, Escape closes, × clears. You own the options, so it works with local filtering or a server search:
+
+```jsx
+<Combobox
+  items={results}                       // the options to show now
+  value={picked}                        // the picked item, or null
+  onValueChange={setPicked}
+  onInputValueChange={setQuery}         // e.g. debounce, then search the server
+  itemToString={(p) => p.name}          // the input's text once picked
+  itemKey={(p) => p.id}
+  renderItem={(p, { query }) => <ComboboxHighlight text={p.name} query={query} />}
+  loading={searching}
+  message={query.length < 2 ? 'Type at least 2 letters' : undefined}
+/>
+```
 
 Not included by design: file upload / date-input / multi-select wrappers. Those wrap specific third-party libraries (`react-dropzone`, `react-datepicker`) that are app-specific integration choices, not look-and-feel — build them in the consuming app using `Input`/`Button`/`Popover`/`Calendar` primitives from here.
 
