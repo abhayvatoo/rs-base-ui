@@ -23,6 +23,8 @@ The stylesheet is fully self-contained (Tailwind is compiled at build time insid
 
 Button, Input, Textarea, Label, Checkbox, RadioGroup/RadioGroupItem, Select (+ subcomponents), Dialog (+ subcomponents), AlertDialog (+ subcomponents), DropdownMenu (+ subcomponents), Table (+ subcomponents), Badge, Alert (+ AlertTitle/AlertDescription), Card (+ CardHeader/CardTitle/CardDescription/CardAction/CardContent/CardFooter), Breadcrumb (+ subcomponents), Pagination (+ subcomponents), Tooltip (+ subcomponents), Progress, Tabs (+ subcomponents), Popover (+ subcomponents), Calendar, Combobox (+ ComboboxHighlight).
 
+When a `Dialog` or `AlertDialog` closes, focus goes back to whatever had it when the dialog opened, also for a dialog opened from state rather than a Trigger. A dialog opened from a `DropdownMenu` item returns focus to the menu's button. Your own `onOpenAutoFocus` / `onCloseAutoFocus` run first, and `event.preventDefault()` in `onCloseAutoFocus` turns this off.
+
 `Calendar` is shadcn's calendar on [DayPicker](https://daypicker.dev) (`@daypicker/react`, installed as a dependency). Every DayPicker prop passes through:
 
 ```jsx
@@ -41,7 +43,7 @@ Button, Input, Textarea, Label, Checkbox, RadioGroup/RadioGroupItem, Select (+ s
 
 Cell size is the `--cell-size` CSS variable (default `--spacing(8)`), e.g. `className="[--cell-size:--spacing(10)]"`.
 
-`Combobox` is a search box with a list that opens under it (WAI-ARIA combobox): arrow keys move the highlight while focus stays in the input, Enter picks, Escape closes, × clears. You own the options, so it works with local filtering or a server search:
+`Combobox` is a search box with a list that opens under it (WAI-ARIA combobox): arrow keys move the highlight while focus stays in the input, Enter picks, Escape closes, × clears (Tab reaches × once something is picked). You own the options, so it works with local filtering or a server search:
 
 ```jsx
 <Combobox

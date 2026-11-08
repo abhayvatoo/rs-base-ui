@@ -179,10 +179,11 @@ const Combobox = React.forwardRef(function Combobox(
             <button
               type="button"
               aria-label="Clear"
-              tabIndex={-1}
+              // Leaving the input puts the picked label back, so unpicked text is gone before Tab could land here.
+              tabIndex={value ? undefined : -1}
               onMouseDown={(event) => event.preventDefault()}
               onClick={clear}
-              className="absolute top-1/2 right-1.5 -translate-y-1/2 rounded-sm p-1 text-muted-foreground hover:text-foreground"
+              className="absolute top-1/2 right-1.5 -translate-y-1/2 rounded-sm p-1 text-muted-foreground hover:text-foreground focus-visible:ring-1 focus-visible:ring-ring focus-visible:outline-none"
             >
               <XIcon className="size-4" />
             </button>
